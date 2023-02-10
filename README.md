@@ -55,6 +55,7 @@ After cloning the repository you will have a folder called AirBnB_clone. In here
 > models/review.py: Review class that inherits from BaseModel 
 '''
 
+
 ### How to use it
 It can work in two different modes:
 
@@ -62,8 +63,43 @@ It can work in two different modes:
 
 In **Interactive mode**, the console will display a prompt (hbnb) indicating that the user can write and execute a command. After the command is run, the prompt will appear again a wait for a new command. This can go indefinitely as long as the user does not exit the program.
 
+```python
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+```
+
 In **Non-interactive mode**, the shell will need to be run with a command input piped into its execution so that the command is run as soon as the Shell starts. In this mode no prompt will appear, and no further input will be expected from the user.
 
+```python
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+```
 ## Format of Command Input
 In order to give commands to the console, these will need to be piped through an echo in case of **Non-interactive mode**.
 
@@ -74,6 +110,34 @@ Most commands have several options or arguments that can be used when executing 
 
 Example:
 
+```python
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) create BaseModel
+49faff9a-6318-451f-87b6-910505c55907
+user@ubuntu:~/AirBnB$ ./console.py
+```
+
+OR
+
+```python
+user@ubuntu:~/AirBnB$ ./console.py $ echo "create BaseModel" | ./console.py
+(hbnb)
+e37ebcd3-f8e1-4c1f-8095-7a019070b1fa
+(hbnb)
+user@ubuntu:~/AirBnB$ ./console.py
+```
+## Available commands and what they do
+
+The recognizable commands by the interpreter are the following:
+| Command | Description |
+| --- | --- |
+| **quit** or **EOF** |Exits the program
+| **Usage** | By itself |
+| -----	| ----- |
+| **help** |	Provides a text describing how to use a command. |
+| **Usage** |	By itself --or-- help <command> |
+| -----	| ----- |
+| **create** |	Creates a new instance of a valid Class, saves it (to the JSON file) and prints the id. Valid classes are: BaseModel, User, State, City, Amenity, Place, Review. |
 ## Authors:
 * **Miracle Livinus**
 * **John Josephine**
